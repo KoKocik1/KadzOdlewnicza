@@ -40,6 +40,8 @@ namespace KadzOdlewnicza.Status
 
                 // Obliczanie objętości metalu wlanej do kadzi
                 double metalVolume = (Mass / Density);
+
+                // Obliczanie objętości kadzi 3)
                 double vatVolume = ((1 / 3.0) * Math.PI * Height * (baseRadius * baseRadius + baseRadius * topRadius + topRadius * topRadius));
 
                 if (metalVolume > vatVolume)
