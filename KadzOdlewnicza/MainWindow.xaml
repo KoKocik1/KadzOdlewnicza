@@ -107,7 +107,7 @@
                             <ComboBoxItem>mm</ComboBoxItem>
                         </ComboBox>
 
-                        <TextBlock Grid.Row="6" Text="Średnica podstawy:" />
+                        <TextBlock Grid.Row="6" Text="Średnica podstawy (mniejsza):" />
                         <TextBox Grid.Row="7" Grid.Column="0" x:Name="BaseDiameterTextBox"  Width="150" TextChanged="TextBoxChanged"/>
                         <ComboBox SelectedIndex="0" Grid.Row="7" Grid.Column="1" x:Name="BaseDiameterComboBox" Width="80" SelectionChanged="ComboBoxChanged">
                             <ComboBoxItem>m</ComboBoxItem>
@@ -115,7 +115,7 @@
                             <ComboBoxItem>mm</ComboBoxItem>
                         </ComboBox>
 
-                        <TextBlock Grid.Row="8" Text="Średnica górna:" />
+                        <TextBlock Grid.Row="8" Text="Średnica górna (większa):" />
                         <TextBox Grid.Row="9" Grid.Column="0" x:Name="TopDiameterTextBox"  Width="150" TextChanged="TextBoxChanged"/>
                         <ComboBox SelectedIndex="0" Grid.Row="9" Grid.Column="1" x:Name="TopDiameterComboBox" Width="80" SelectionChanged="ComboBoxChanged">
                             <ComboBoxItem>m</ComboBoxItem>

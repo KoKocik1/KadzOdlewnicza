@@ -47,20 +47,44 @@ namespace KadzOdlewnicza.Status
                     //zwróć informacje o zamałej kadzi
                     GUI.setError("Za mała kadź");
                     Results.Error = true;
-                    //return;
+                    return;
                 }
                 else
                 {
                     Results.Error = false;
                     GUI.setError("");
+                    
                 }
 
-                // Obliczanie stosunku wysokości metalu do wysokości kadzi
-                double ratio = metalVolume / vatVolume;
+               
 
-                // Obliczanie wysokości metalu
-                double metalHeight = ratio * Height;
+                // Obliczenie wysokości pełnego stożka 1)
+                double H_stozka = (Height * topRadius) / (topRadius - baseRadius);
 
+                // Obliczenie objętości pełnego stożka 2)
+                double V_stozka = (1 / 3.0) * Math.PI * (topRadius * topRadius) * H_stozka;
+
+                // Obliczenie objętości górnej części stożka (czapki) 4)
+                double V_czapki = V_stozka-vatVolume;
+                double R_metal;
+                double H_metalTop;
+                double H_czapki;
+                double metalHeight=-1;
+                if (V_czapki >= 0)
+                {
+
+                    // Obliczenie promienia wlanego metalu 5)
+                    R_metal = Math.Pow(((V_czapki + metalVolume) / V_stozka), 1.0 / 3.0) * topRadius;
+
+                    // Obliczenie wysokości od końca metalu do czubka czapki 6)
+                    H_metalTop = (R_metal * H_stozka) / topRadius;
+
+                    // Obliczanie wysokości czapki 7)
+                    H_czapki = (baseRadius * H_stozka) / topRadius;
+
+                    //Obliczenie wysokości metalu 8)
+                    metalHeight = H_metalTop - H_czapki;
+                }
                 Results.Height_metal = metalHeight;
                 Results.Volume_vat = vatVolume;
                 Results.Volume_metal = metalVolume;
