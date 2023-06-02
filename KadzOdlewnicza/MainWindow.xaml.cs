@@ -20,6 +20,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
+using OfficeOpenXml;
 
 //TODO: Obliczanie ilości gazu
 
@@ -262,7 +263,7 @@ namespace KadzOdlewnicza
             }
 
         }
-        private void Raport(object sender, RoutedEventArgs e)
+        private void RaportTXT(object sender, RoutedEventArgs e)
         {
             //przycisk przeliczenia niestandardowej wysokości modelu na skalę i obliczenie pozostałych parametrów modelu
             if (ready && !gasCalculate.Error)
@@ -298,6 +299,48 @@ namespace KadzOdlewnicza
                 }
             }
         }
+        private void RaportCSV(object sender, RoutedEventArgs e)
+        {
+            //przycisk przeliczenia niestandardowej wysokości modelu na skalę i obliczenie pozostałych parametrów modelu
+            if (ready && !gasCalculate.Error)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Plik CSV (*.csv)|*.csv";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string filePath = saveFileDialog.FileName;
+
+                    // Tworzenie przykładowych linii tekstu
+                    var combinedList = new List<Tuple<string, string>>();
+                    combinedList.Add(new Tuple<string, string>("Data badania", $"{DateTime.Now.ToString("yyyy:MM:dd HH:mm:ss")}"));
+                    combinedList.Add(new Tuple<string, string>("", ""));
+                    combinedList.AddRange(vatProperties.toList());
+                    combinedList.AddRange(vatResults.toList());
+                    combinedList.Add(new Tuple<string, string>("Skala", $"{LeftScale.Text:F2}:{RightScale.Text:F2}"));
+                    combinedList.Add(new Tuple<string, string>("", ""));
+                    combinedList.AddRange(modelProperties.toList());
+                    combinedList.AddRange(modelResults.toList());
+                    combinedList.AddRange(gasProperties.toList());
+                    combinedList.AddRange(gasResults.toList());
+
+
+                    // Zapisywanie linii tekstu i zmiennych do pliku
+                    using (StreamWriter file = new StreamWriter(filePath,false, Encoding.GetEncoding("Windows-1250")))
+                    {
+                        foreach (var variable in combinedList)
+                        {
+                            // Formatowanie wartości jako stringa
+                            string valueString = variable.Item2.ToString();
+
+                            // Zapisywanie do pliku CSV
+                            file.WriteLine($"{variable.Item1};{valueString}");
+                        }
+                    }
+                    MessageBox.Show("Plik został zapisany.");
+                }
+            }
+        }
+
         #endregion
         /********************** AUTOMATYCZNE OBLICZENIA ***********************/
         private void update()

@@ -33,6 +33,19 @@ namespace KadzOdlewnicza.Status
         {
             try
             {
+                if (TopDiameter <= BaseDiameter)
+                {
+                    //zwróć informacje o zamałej kadzi
+                    GUI.setError("Błędne średnice");
+                    Results.Error = true;
+                    return;
+                }
+                else
+                {
+                    Results.Error = false;
+                    GUI.setError("");
+
+                }
 
                 // Obliczanie promieni podstawy i górnej części kadzi
                 double baseRadius = BaseDiameter / 2.0;
@@ -105,6 +118,18 @@ namespace KadzOdlewnicza.Status
                 $"-Wysokość kotła: {Height:F2} m\n\t" +
                 $"-Średnica dolna kotła: {BaseDiameter:F2} m\n\t" +
                 $"-Średnica górna kotła: {TopDiameter:F2} m\n";
+        }
+        public List<Tuple<string, string>> toList()
+        {
+            var variables = new List<Tuple<string, string>>();
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Właściwości kadzi hutniczej", ""));
+            variables.Add(new Tuple<string, string>("Masa stali [kg]", $"{Mass:F2}"));
+            variables.Add(new Tuple<string, string>("Gęstość stali [ kg/m³]", $"{Density:F2}"));
+            variables.Add(new Tuple<string, string>("Wysokość kotła [m]", $"{Height:F2}"));
+            variables.Add(new Tuple<string, string>("Średnica dolna kotła [m]", $"{BaseDiameter:F2}"));
+            variables.Add(new Tuple<string, string>("Średnica górna kotła [m]", $"{TopDiameter:F2}"));
+            return variables;
         }
     }
 }

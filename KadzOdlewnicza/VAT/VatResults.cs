@@ -27,8 +27,19 @@ namespace KadzOdlewnicza.Calculations
         {
             return $"Obliczenia dla kadzi hutniczej:\n" +
                 $"\t-Wysokość wlanego metalu: {Height_metal:F2} m\n\t" +
-                $"-Objętość wlanego metalu: {Volume_metal:F2} m³\n\t" +
-                $"-Objętość kotła: {Volume_vat:F2} m³\n";
+                $"-Objętość wlanego metalu: {Volume_metal:F3} m³\n\t" +
+                $"-Objętość kotła: {Volume_vat:F3} m³\n";
+        }
+        public List<Tuple<string, string>> toList()
+        {
+            var variables = new List<Tuple<string, string>>();
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Obliczenia dla kadzi hutniczej", ""));
+            variables.Add(new Tuple<string, string>("Wysokość wlanego metalu [m]", $"{Height_metal:F2}"));
+            variables.Add(new Tuple<string, string>("Objętość wlanego metalu [m³]", $"{Volume_metal:F3}"));
+            variables.Add(new Tuple<string, string>("Objętość kotła [m³]", $"{Volume_vat:F3}"));
+
+            return variables;
         }
     }
 }

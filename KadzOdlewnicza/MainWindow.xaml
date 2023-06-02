@@ -229,6 +229,7 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0" Grid.Column="0" Text="Tlen [%]:" />
@@ -264,7 +265,8 @@
                         <Label Grid.Row="11" Grid.Column="1" x:Name="PrzeplywGazuModel" Content=" " />
 
                         <Label Foreground="{StaticResource C5}" Margin="0,20,0,0" Grid.Row="12" Grid.Column="0" x:Name="ErrorGas" Content=" " />
-                        <Button Margin="10,20,0,0" Grid.Row="12" Width="100" Grid.Column="1" Click="Raport" Content="Generuj Raport" />
+                        <Button Margin="10,20,0,0" Grid.Row="12" Width="100" Grid.Column="1" Click="RaportTXT" Content="Raport TXT" />
+                        <Button Margin="10,20,0,0" Grid.Row="13" Width="100" Grid.Column="1" Click="RaportCSV" Content="Raport CSV" />
                     </Grid>
 
                 </StackPanel>

@@ -20,8 +20,21 @@ namespace KadzOdlewnicza.Gas
                 $"\t-Współczynnik C przemysłu: {WspolczynnikCprzemysl}\n\t" +
                 $"-Współczynnik C modelu: {WspolczynnikCmodel}\n\t" +
                 $"-Stosunek C: {StosunekC}\n\t" +
-                $"-Skala przepływu gazu: {SkalaPrzeplywuGazu:F2}\n\t" +
-                $"-Przepływ gazu dla modelu: {PrzeplywGazuModel:F2} l/min\n";
+                $"-Skala przepływu gazu: {SkalaPrzeplywuGazu:F3}\n\t" +
+                $"-Przepływ gazu dla modelu: {PrzeplywGazuModel:F3} l/min\n";
+        }
+        public List<Tuple<string, string>> toList()
+        {
+            var variables = new List<Tuple<string, string>>();
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Obliczenia przepływu gazu", ""));
+            variables.Add(new Tuple<string, string>("Współczynnik C przemysłu", $"{WspolczynnikCprzemysl}"));
+            variables.Add(new Tuple<string, string>("Współczynnik C modelu [m³]", $"{WspolczynnikCmodel}"));
+            variables.Add(new Tuple<string, string>("Stosunek C", $"{StosunekC}"));
+            variables.Add(new Tuple<string, string>("Skala przepływu gazu", $"{SkalaPrzeplywuGazu:F3}"));
+            variables.Add(new Tuple<string, string>("Przepływ gazu dla modelu [l/min]", $"{PrzeplywGazuModel:F3}"));
+
+            return variables;
         }
     }
 }

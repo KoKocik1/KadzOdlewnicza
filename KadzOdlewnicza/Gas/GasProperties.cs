@@ -59,5 +59,34 @@ namespace KadzOdlewnicza.Status
                 $"-Przepływ gazu Q: {PrzeplywGazuQ} l/min\n\t" +
                 $"-Skala modelu: {SkalaLiniowaModeluSl}\n";
         }
+        public List<Tuple<string, string>> toList()
+        {
+            var variables = new List<Tuple<string, string>>();
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Właściwości dla obliczeń przepływu gazu", ""));
+            variables.Add(new Tuple<string, string>("Skład argonu [%]", $"{Argon}"));
+            variables.Add(new Tuple<string, string>("Skład tlenu [%]", $"{Tlen}"));
+            variables.Add(new Tuple<string, string>("Skład azotu [%]", $"{Azot}"));
+            variables.Add(new Tuple<string, string>("Skład powietrza [%]", $"{Powietrze}"));
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Masa molowa argonu [g/mol]", $"{MasaMolowaArgonu}"));
+            variables.Add(new Tuple<string, string>("Masa molowa tlenu [g/mol]", $"{MasaMolowaTlenu}"));
+            variables.Add(new Tuple<string, string>("Masa molowa azotu [g/mol]", $"{MasaMolowaAzotu}"));
+            variables.Add(new Tuple<string, string>("Masa molowa powietrza [g/mol]", $"{MasaMolowaPowietrza}"));
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Gęstość argonu [kg/m³]", $"{GestoscArgonu}"));
+            variables.Add(new Tuple<string, string>("Gęstość tlenu [kg/m³]", $"{GestoscTlenu}"));
+            variables.Add(new Tuple<string, string>("Gęstość azotu [kg/m³]", $"{GestoscAzotu}"));
+            variables.Add(new Tuple<string, string>("Gęstość powietrza [kg/m³]", $"{GestoscPowietrza}"));
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Gęstość stali [kg/m³]", $"{GestoscStali}"));
+            variables.Add(new Tuple<string, string>("Gęstość wody [kg/m³]", $"{GestoscWody}"));
+            variables.Add(new Tuple<string, string>("", ""));
+            variables.Add(new Tuple<string, string>("Przepływ gazu Q [l/min]", $"{PrzeplywGazuQ}"));
+            variables.Add(new Tuple<string, string>("Skala modelu", $"{SkalaLiniowaModeluSl}"));
+
+
+            return variables;
+        }
     }
 }
