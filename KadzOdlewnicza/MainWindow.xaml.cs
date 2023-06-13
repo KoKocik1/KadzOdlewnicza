@@ -106,7 +106,14 @@ namespace KadzOdlewnicza
                         }
                         else
                         {
-                            PrzeplywGazuHuta.Text = gasProperties.PrzeplywGazuQ.ToString();
+                            if (Auxiliary.IsEmpty(PrzeplywGazuHuta.Text))
+                            {
+                                gasProperties.PrzeplywGazuQ = 0;
+                            }
+                            else
+                            {
+                                PrzeplywGazuHuta.Text = gasProperties.PrzeplywGazuQ.ToString();
+                            }
                         }
                         break;
                     case "SkalaLiniowa":
@@ -128,7 +135,14 @@ namespace KadzOdlewnicza
                         }
                         else
                         {
-                            SkalaPrzeplywGazu.Text = gasProperties.PrzeplywGazuQ.ToString();
+                            if (Auxiliary.IsEmpty(SkalaPrzeplywGazu.Text))
+                            {
+                                gasResults.SkalaPrzeplywuGazu = 0;
+                            }
+                            else
+                            {
+                                SkalaPrzeplywGazu.Text = gasProperties.PrzeplywGazuQ.ToString();
+                            }
                         }
                         break;
                     default:
@@ -159,7 +173,8 @@ namespace KadzOdlewnicza
             }
             else
             {
-                textBox.Text = "0";
+                textBox.Text = "";
+                property.SetValue(gasProperties, 0);
             }
         }
         private void vatPropertiesSetGet(ComboBox comboBox, TextBox textBox, bool kg, String properties)
@@ -183,13 +198,20 @@ namespace KadzOdlewnicza
             // Jeżeli nie to zwróć poprzednią wartość
             else
             {
-                if (kg)
+                if (Auxiliary.IsEmpty(textBox.Text))
                 {
-                    textBox.Text = Auxiliary.getUnitKgBack(comboBox.SelectedIndex, (double)property.GetValue(vatProperties));
+                    property.SetValue(vatProperties, null);
                 }
                 else
                 {
-                    textBox.Text = Auxiliary.getUnitMetersBack(comboBox.SelectedIndex, (double)property.GetValue(vatProperties));
+                    if (kg)
+                    {
+                        textBox.Text = Auxiliary.getUnitKgBack(comboBox.SelectedIndex, (double)property.GetValue(vatProperties));
+                    }
+                    else
+                    {
+                        textBox.Text = Auxiliary.getUnitMetersBack(comboBox.SelectedIndex, (double)property.GetValue(vatProperties));
+                    }
                 }
                 
             }
@@ -225,7 +247,14 @@ namespace KadzOdlewnicza
                 }
                 else
                 {
-                    LeftScale.Text = Auxiliary.checkZero(scale.LeftScale);
+                    if (Auxiliary.IsEmpty(LeftScale.Text))
+                    {
+                        scale.LeftScale = 1;
+                    }
+                    else
+                    {
+                        LeftScale.Text = Auxiliary.checkZero(scale.LeftScale);
+                    }
                 }
             }  
         }
@@ -240,7 +269,14 @@ namespace KadzOdlewnicza
                 }
                 else
                 {
-                    RightScale.Text = Auxiliary.checkZero(scale.RightScale);
+                    if (Auxiliary.IsEmpty(RightScale.Text))
+                    {
+                        scale.RightScale = 1;
+                    }
+                    else
+                    {
+                        RightScale.Text = Auxiliary.checkZero(scale.RightScale);
+                    }
                 }
             }
 
@@ -388,9 +424,10 @@ namespace KadzOdlewnicza
                     LeftScale.IsEnabled = true;
                     RightScale.IsEnabled = true;
                     HeightModelTextBox.IsEnabled = false;
-                    TopDiameterModelTextBox.IsEnabled = false;
-                    BaseDiameterModelTextBox.IsEnabled = false;
                     ScaleButton.IsEnabled = false;
+                    LeftScale.Background = Brushes.LightCyan;
+                    RightScale.Background = Brushes.LightCyan;
+                    HeightModelTextBox.Background = Brushes.DarkGray;
                 }
             }
             catch (Exception ex) { }
@@ -405,9 +442,10 @@ namespace KadzOdlewnicza
                     LeftScale.IsEnabled = false;
                     RightScale.IsEnabled = false;
                     HeightModelTextBox.IsEnabled = true;
-                    TopDiameterModelTextBox.IsEnabled = true;
-                    BaseDiameterModelTextBox.IsEnabled = true;
                     ScaleButton.IsEnabled = true;
+                    LeftScale.Background = Brushes.DarkGray;
+                    RightScale.Background = Brushes.DarkGray;
+                    HeightModelTextBox.Background = Brushes.LightCyan;
                 }
             }
             catch (Exception ex) { }

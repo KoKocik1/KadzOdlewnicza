@@ -57,5 +57,9 @@ namespace KadzOdlewnicza.Calculations
             }
             return false;
         }
+        public static bool IsEmpty(string text)
+        {
+            return text == null || text.Length == 0;
+        }
     }
 }

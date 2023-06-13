@@ -87,7 +87,7 @@
 
                         <TextBlock Grid.Row="0" Text="Masa stali:" />
                         <TextBox Grid.Row="1" Grid.Column="0" x:Name="MassTextBox" Width="150" TextChanged="TextBoxChanged"/>
-                        <ComboBox SelectedIndex="0" Grid.Row="1" Grid.Column="1" x:Name="MassComboBox" Width="80" SelectionChanged="ComboBoxChanged">
+                        <ComboBox SelectedIndex="1" Grid.Row="1" Grid.Column="1" x:Name="MassComboBox" Width="80" SelectionChanged="ComboBoxChanged">
                             <ComboBoxItem >kg</ComboBoxItem>
                             <ComboBoxItem>t</ComboBoxItem>
                         </ComboBox>
@@ -176,9 +176,9 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
 
-                            <TextBox Grid.Row="0" Grid.Column="0" Width="40" Text="1" x:Name="LeftScale" TextChanged="ScaleLCalculate_Changed"/>
+                            <TextBox Grid.Row="0" Grid.Column="0" Width="40" Text="1" x:Name="LeftScale" Background="LightCyan" TextChanged="ScaleLCalculate_Changed"/>
                             <Label Grid.Row="0" Grid.Column="1" Width="15" Content=":"/>
-                            <TextBox Grid.Row="0" Grid.Column="2" Width="40" Text="1" x:Name="RightScale" TextChanged="ScaleRCalculate_Changed"/>
+                            <TextBox Grid.Row="0" Grid.Column="2" Width="40" Text="1" x:Name="RightScale" Background="LightCyan" TextChanged="ScaleRCalculate_Changed"/>
                         </Grid>
 
 
@@ -248,10 +248,10 @@
                         <TextBox Margin="10,20,0,0" Grid.Row="4" Grid.Column="1" IsEnabled="True" Width="100" x:Name="PrzeplywGazuHuta" TextChanged="TextBoxChanged"/>
 
                         <TextBlock Grid.Row="5" Grid.Column="0" Text="Skala liniowa:" />
-                        <TextBox Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" IsEnabled="True" Width="100" x:Name="SkalaLiniowa" TextChanged="TextBoxChanged"/>
+                        <TextBox Margin="10,0,0,0" Grid.Row="5" Grid.Column="1" IsEnabled="False" Width="100" x:Name="SkalaLiniowa" TextChanged="TextBoxChanged"/>
 
                         <TextBlock Grid.Row="6" Grid.Column="0" Text="Skala przepływu gazu:" />
-                        <TextBox Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" IsEnabled="True" Width="100" x:Name="SkalaPrzeplywGazu" TextChanged="TextBoxChanged"/>
+                        <TextBox Margin="10,0,0,0" Grid.Row="6" Grid.Column="1" IsEnabled="False" Width="100" x:Name="SkalaPrzeplywGazu" TextChanged="TextBoxChanged"/>
 
 
                         <TextBlock Margin="0,20,0,0" Grid.Row="8" Grid.Column="0" Text="Wspolczynnik C przemysl:" />
